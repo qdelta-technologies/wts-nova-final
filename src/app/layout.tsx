@@ -21,7 +21,6 @@ const editorialSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "WTS NOVA — Your business. Our social expertise.",
   description: "We help businesses build a stronger social media presence with great content, consistent posting, and the right strategy.",
-  icons: { icon: "/images/wts-nova-logo-dark.png" },
 };
 
 export const viewport: Viewport = {

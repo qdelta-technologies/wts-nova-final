@@ -52,8 +52,9 @@
 .headline-social { display: block; margin-top: 6px; font-family: var(--font-instrument), Georgia, serif; font-size: var(--type-display); line-height: 1.12; font-weight: 400; letter-spacing: -.02em; color: #c5dce7; text-wrap: balance; }
 .hero-description { max-width: 590px; margin: 24px auto 0; font-size: var(--type-body); line-height: var(--leading-body); color: var(--on-dark-muted); text-wrap: pretty; }
 .hero-actions { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
-.hero-primary { min-width: 156px; }
-.hero .button-dark { background: #f2efe7; color: #0b1933; border-color: #f2efe7; box-shadow: 0 4px 20px #00000014; }
+.hero-primary { min-width: 172px; }
+.hero-actions .button { max-width: 100%; }
+.hero .button-dark { --button-icon-bg: #0b1933; --button-icon-color: #f2efe7; background: #f2efe7; color: #0b1933; border-color: #f2efe7; box-shadow: 0 4px 20px #00000014; }
 .hero .button-light { background: #ffffff05; color: #f2efe7; border-color: #66a3bf80; }
 .hero :focus-visible { outline-color: #a0c4d7; }
 
@@ -64,6 +65,9 @@
   .hero .button-light:hover { background: #3368a026; border-color: #a0c4d7; transform: translateY(-2px); }
 }
 @media (min-width: 640px) and (max-width: 1023px) { .hero-horizon { height: 240px; bottom: 30px; } }
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero { padding-top: clamp(24px, 5svh, 44px); padding-bottom: clamp(82px, 11svh, 120px); }
+}
 @media (max-width: 639px) {
   .hero { padding-block: 58px 144px; }
   .hero-label { font-size: 9px; letter-spacing: .1em; gap: 7px; }
@@ -72,7 +76,7 @@
   .headline-social { font-size: clamp(38px, 9.5vw, 50px); margin-top: 12px; max-width: 480px; margin-inline: auto; }
   .hero-description { max-width: 360px; margin-top: 22px; }
   .hero-actions { flex-direction: column; align-items: center; margin-top: 24px; gap: 10px; }
-  .hero-actions .button { width: min(100%, 300px); }
+  .hero-actions .button { width: auto; max-width: 100%; }
   .hero-horizon { height: 140px; bottom: 26.5px; }
   .hero-atmosphere::after { left: 5%; right: 5%; height: 170px; bottom: -60px; filter: blur(12px); }
   .hero-particles span:nth-child(n + 11) { display: none; }

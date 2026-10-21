@@ -10,7 +10,12 @@ export function TrustBar() {
         <div className="trust-track">
           {[0, 1].map((copy) => (
             <div className="trust-set" key={copy}>
-              {services.map((service) => <span className="trust-item" key={service}>{service}<Sparkle className="h-3 w-3 shrink-0 text-blue" /></span>)}
+              {services.map((service) => (
+                <span className="trust-item" key={service}>
+                  <span className="trust-name">{service}</span>
+                  <span className="trust-separator"><Sparkle className="h-3 w-3 shrink-0 text-blue" /></span>
+                </span>
+              ))}
             </div>
           ))}
         </div>

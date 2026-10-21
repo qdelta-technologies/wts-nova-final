@@ -7,15 +7,15 @@
 .audience-intro { margin: 22px 0 0; font-size: var(--type-body); line-height: var(--leading-body); color: var(--on-dark-muted); text-wrap: pretty; }
 .audience-rule { display: block; width: 36px; height: 1px; margin-top: 24px; background: var(--line-blue); }
 .audience-capsules { display: grid; grid-auto-rows: 1fr; gap: 20px; padding: 0; margin: 0; min-width: 0; list-style: none; }
-.audience-capsule { display: flex; align-items: center; gap: 22px; width: calc(100% - 16px); min-width: 0; min-height: 224px; padding: 24px 36px 24px 18px; border: 1px solid var(--line-dark); border-radius: var(--radius-pill); transition: transform var(--duration) var(--ease-out), box-shadow var(--duration); }
-.audience-business { justify-self: end; background: #66a3bf0f; }
-.audience-creators { justify-self: start; flex-direction: row-reverse; padding: 24px 18px 24px 40px; background: #ffffff05; }
+.audience-capsule { display: flex; align-items: center; gap: 22px; width: 100%; min-width: 0; min-height: 224px; padding: 24px 36px 24px 18px; border: 1px solid var(--line-dark); border-radius: var(--radius-pill); transition: transform var(--duration) var(--ease-out), box-shadow var(--duration); }
+.audience-business { background: #66a3bf0f; }
+.audience-creators { background: #ffffff05; }
 .audience-visual { position: relative; flex: 0 0 128px; width: 128px; height: 128px; }
 .audience-photo { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 50%; }
 .audience-photo img { object-fit: cover; transition: transform 500ms var(--ease-out); }
 .audience-badge { position: absolute; top: -2px; left: -2px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--ink); background: var(--ink); color: var(--on-dark); }
 .audience-badge svg { width: 17px; height: 17px; }
-.audience-creators .audience-badge { left: auto; right: -2px; background: var(--accent); }
+.audience-creators .audience-badge { background: var(--accent); }
 .audience-copy { flex: 1; min-width: 0; text-align: left; }
 .audience-number { display: block; font-size: 10px; line-height: 1.5; letter-spacing: .1em; margin-bottom: 8px; color: #a0c4d7; }
 .audience-copy h3 { margin: 0 0 12px; font-family: var(--font-serif), Georgia, serif; font-size: var(--type-card); font-weight: 400; line-height: 1.16; letter-spacing: -.015em; text-wrap: balance; }
@@ -37,14 +37,15 @@
   .audience-capsule { min-height: 210px; }
 }
 @media (max-width: 639px) {
-  .audience-capsules { gap: 16px; grid-auto-rows: auto; }
-  .audience-capsule { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: center; column-gap: 18px; row-gap: 18px; width: 100%; padding: 24px; border-radius: var(--radius-lg); min-height: 0; }
-  .audience-creators { grid-template-columns: minmax(0, 1fr) 80px; }
-  .audience-visual { grid-column: 1; grid-row: 1; width: 80px; height: 80px; }
-  .audience-creators .audience-visual { grid-column: 2; }
+  .audience-capsules { gap: 16px; grid-auto-rows: 1fr; }
+  .audience-capsule, .audience-creators { display: grid; grid-template-columns: minmax(0, 1fr) 80px; align-content: center; align-items: center; column-gap: 18px; row-gap: 18px; width: 100%; padding: 38px 32px; border-radius: 76px; min-height: 0; }
+  .audience-visual { grid-column: 2; grid-row: 1; width: 80px; height: 80px; }
+  .audience-creators .audience-badge { left: -2px; right: auto; }
   .audience-copy { display: contents; }
-  .audience-number { grid-column: 2; grid-row: 1; align-self: start; margin: 0; }
-  .audience-copy h3 { grid-column: 2; grid-row: 1; align-self: start; font-size: 24px; margin: 20px 0 0; text-wrap: pretty; }
-  .audience-creators .audience-number, .audience-creators h3 { grid-column: 1; }
+  .audience-number { grid-column: 1; grid-row: 1; align-self: start; margin: 0; }
+  .audience-copy h3 { grid-column: 1; grid-row: 1; align-self: start; font-size: 24px; margin: 20px 0 0; text-wrap: pretty; }
   .audience-copy p { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (max-width: 359px) {
+  .audience-capsule, .audience-creators { column-gap: 12px; padding-inline: 26px; border-radius: 68px; }
 }

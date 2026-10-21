@@ -11,7 +11,7 @@ function ContactAction({ href, children, secondary = false, noticeId = "ending-c
   noticeId?: string;
 }) {
   const className = `ending-action${secondary ? " ending-action-secondary" : ""}`;
-  const content = <>{children}<Arrow diagonal /></>;
+  const content = <>{children}<span className="button-icon"><Arrow diagonal /></span></>;
   return href ? <a className={className} href={href}>{content}</a> : (
     <button type="button" disabled className={className} title="Contact destination pending" aria-describedby={noticeId}>{content}</button>
   );

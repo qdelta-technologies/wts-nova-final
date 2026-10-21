@@ -70,9 +70,9 @@ export function Navbar() {
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <a className="button button-dark nav-cta" href="#get-in-touch">Contact <Arrow diagonal /></a>
+          <a className="button button-dark nav-cta" href="#get-in-touch">Contact <span className="button-icon"><Arrow diagonal /></span></a>
           <button ref={menuButton} type="button" className="menu-button lg:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>
-            <span className={open ? "menu-lines is-open" : "menu-lines"}><span /><span /></span>
+            <span className={open ? "menu-lines is-open" : "menu-lines"}><span /><span /><span /></span>
           </button>
         </div>
         {open && (

@@ -15,8 +15,7 @@
 .agency-footer-grid h2 { font-size: 11px; letter-spacing: .12em; line-height: 1.5; font-weight: 600; text-transform: uppercase; color: #a0c4d7; margin: 0 0 16px; }
 .agency-footer-description { font-size: 16px; line-height: var(--leading-body); color: var(--on-dark-muted); margin: 0; }
 .agency-footer-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 20px; }
-.agency-footer-actions .ending-action { --button-height: 44px; padding: 10px 16px; font-size: 13px; gap: 14px; }
-.agency-footer-actions svg { width: 15px; height: 15px; }
+.agency-footer-actions .ending-action { font-size: 13px; }
 .agency-footer-note { font-size: 12px; line-height: 1.6; color: var(--on-dark-muted); margin: 12px 0 0; }
 .agency-footer-links ul, .agency-footer-socials { margin: 0; padding: 0; list-style: none; }
 .agency-footer-links a, .agency-footer-links li > span { display: flex; align-items: center; min-height: 44px; padding-block: 8px; font-size: 14px; line-height: 1.6; color: var(--on-dark); }

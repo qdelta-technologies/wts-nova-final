@@ -8,8 +8,8 @@
 .ending-cta-lead { max-width: 560px; margin: 22px auto 0; font-size: 18px; line-height: var(--leading-body); text-wrap: balance; color: var(--on-dark); }
 .ending-cta-description { max-width: 520px; margin: 12px auto 0; font-size: var(--type-body); line-height: var(--leading-body); color: var(--on-dark-muted); text-wrap: pretty; }
 .ending-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-.ending-action { background: var(--surface); color: var(--ink); border-color: var(--surface); }
-.ending-action-secondary { color: var(--on-dark); background: #ffffff05; border-color: #66a3bf80; }
+.ending-action { --button-icon-bg: var(--ink); --button-icon-color: var(--surface); min-width: 176px; background: var(--surface); color: var(--ink); border-color: var(--surface); }
+.ending-action-secondary { --button-icon-bg: var(--surface); --button-icon-color: var(--ink); color: var(--on-dark); background: #ffffff05; border-color: #66a3bf80; }
 .ending-action:disabled { cursor: not-allowed; opacity: .75; }
 .ending-preview-note { margin: 14px 0 0; color: var(--on-dark-muted); font-size: 12px; line-height: 1.6; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -19,5 +19,5 @@
 @media (max-width: 639px) {
   .ending-cta-lead { font-size: 16px; }
   .ending-actions { flex-direction: column; align-items: center; }
-  .ending-action { width: min(100%, 300px); }
+  .ending-action { width: auto; max-width: 100%; }
 }

@@ -101,6 +101,8 @@ try {
       sectionHeights:[...document.querySelectorAll('section,footer')].map(e=>[e.className,Math.round(e.getBoundingClientRect().height)]),
       brokenLinks:[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>!['#our-work','#about','#contact'].includes(h)&&!document.querySelector(h)),
       equalServices:new Set([...document.querySelectorAll('.service-capsule')].map(e=>e.offsetHeight)).size===1,
+      mobileCapsules:(()=>{if(innerWidth>=640)return {equal:true,linear:true,rounded:true};const groups=['.service-capsule','.audience-capsule'].map(selector=>[...document.querySelectorAll(selector)]);return {equal:groups.every(cards=>new Set(cards.map(card=>card.offsetHeight)).size===1),linear:groups.every(cards=>cards.every(card=>{const r=card.getBoundingClientRect(),i=card.querySelector('img').getBoundingClientRect(),text=card.querySelector('h3').getBoundingClientRect();return Math.abs(r.left-cards[0].getBoundingClientRect().left)<1&&Math.abs(r.width-cards[0].getBoundingClientRect().width)<1&&i.left>text.left&&text.right<=i.left+1;})),rounded:groups.every(cards=>cards.every(card=>parseFloat(getComputedStyle(card).borderTopLeftRadius)>=60))};})(),
+      desktopAudienceAligned:(()=>{if(innerWidth<640)return true;const cards=[...document.querySelectorAll('.audience-capsule')];const first=cards[0].getBoundingClientRect();return cards.every(card=>{const r=card.getBoundingClientRect(),image=card.querySelector('img').getBoundingClientRect(),heading=card.querySelector('h3').getBoundingClientRect();return Math.abs(r.left-first.left)<1&&Math.abs(r.width-first.width)<1&&image.left<heading.left;});})(),
       clippedNavControls:[...document.querySelectorAll('.navbar .button,.navbar .menu-button')].filter(e=>{const b=e.getBoundingClientRect(),n=document.querySelector('.navbar').getBoundingClientRect();return b.width>0&&(b.left<n.left||b.right>n.right);}).length,
       navLogoLoaded:(()=>{const img=document.querySelector('.brand-logo');return !!img&&img.complete&&img.naturalWidth>0&&img.getAttribute('src')==='/images/wts-nova-logo-dark.png';})(),
       founderPlaceholderOverlap:(()=>{const n=document.querySelector('.founder-placeholder-note'),c=document.querySelector('.founder-caption');return !!n&&n.getBoundingClientRect().bottom>c.getBoundingClientRect().top-8;})(),
@@ -109,8 +111,9 @@ try {
       bodySize:getComputedStyle(document.querySelector('.hero-description')).fontSize,
       pinCount:document.querySelectorAll('.pin-spacer').length,
       servicesFollowsTrust:document.querySelector('.site-shell').nextElementSibling===document.querySelector('#our-services'),
+      desktopFirstScreen:(()=>{if(innerWidth<1024)return {trustAtBottom:true,nextBelowFold:true,contentClear:true};const trust=document.querySelector('.trust-bar').getBoundingClientRect(),next=document.querySelector('#our-services').getBoundingClientRect(),actions=document.querySelector('.hero-actions').getBoundingClientRect();return {trustAtBottom:Math.abs(trust.bottom-innerHeight)<2,nextBelowFold:next.top>=innerHeight-2,contentClear:actions.bottom<trust.top-16};})(),
       smallTargets:[...document.querySelectorAll('.nav-cta,.menu-button,.hero-actions a,.agency-footer-links a,.agency-footer-bottom a')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height<43;}).map(e=>e.className),
-      seamlessTicker:(()=>{const track=document.querySelector('.trust-track'),sets=[...track.querySelectorAll('.trust-set')],viewport=document.querySelector('.trust-viewport').getBoundingClientRect(),widths=sets.map(e=>e.getBoundingClientRect().width);return sets.length===2&&widths.every(w=>w>=viewport.width)&&Math.abs(widths[0]-widths[1])<1&&Math.abs(track.getBoundingClientRect().width-widths[0]*2)<1&&getComputedStyle(track).animationIterationCount==='infinite'&&!document.querySelector('.trust-bar button');})(),
+      seamlessTicker:(()=>{const track=document.querySelector('.trust-track'),sets=[...track.querySelectorAll('.trust-set')],viewport=document.querySelector('.trust-viewport').getBoundingClientRect(),widths=sets.map(e=>e.getBoundingClientRect().width);return {valid:sets.length===2&&widths.every(w=>w>=viewport.width-1)&&Math.abs(widths[0]-widths[1])<1&&Math.abs(track.getBoundingClientRect().width-widths[0]*2)<1&&getComputedStyle(track).animationIterationCount==='infinite'&&!document.querySelector('.trust-bar button'),widths,viewport:viewport.width,track:track.getBoundingClientRect().width,iteration:getComputedStyle(track).animationIterationCount};})(),
       logoCentered:(()=>{const p=document.querySelector('.agency-footer-panel').getBoundingClientRect(),l=document.querySelector('.agency-footer-logo').getBoundingClientRect();return Math.abs((l.left+l.width/2)-(p.left+p.width/2))<1;})(),
       pageHeight:document.documentElement.scrollHeight
     }))()`);
@@ -118,10 +121,15 @@ try {
     check(!metrics.pageOverflow, `Horizontal overflow at ${width}px`);
     check(!metrics.textOverflow.length, `Text overflow at ${width}px: ${metrics.textOverflow}`);
     check(!metrics.smallTargets.length, `Small touch targets at ${width}px: ${metrics.smallTargets}`);
-    check(metrics.seamlessTicker, `Gap-free infinite trust bar at ${width}px`);
+    check(metrics.seamlessTicker.valid, `Gap-free infinite trust bar at ${width}px`);
+    const centeredStars = await evaluate(`(()=>{const items=[...document.querySelectorAll('.trust-item')];return items.slice(0,-1).every((item,i)=>{const label=item.querySelector('.trust-name').getBoundingClientRect(),star=item.querySelector('svg').getBoundingClientRect(),next=items[i+1].querySelector('.trust-name').getBoundingClientRect();return Math.abs((star.left+star.right)/2-(label.right+next.left)/2)<1;});})()`);
+    check(centeredStars, `Trust bar stars centered between labels at ${width}px`);
     check(metrics.pinCount === 0 && metrics.servicesFollowsTrust, `Services must follow the Trust Bar without a pinned section at ${width}px`);
+    check(Object.values(metrics.desktopFirstScreen).every(Boolean), `Hero and Trust Bar must fill the desktop viewport at ${width}x${height}px`);
     check(!metrics.brokenLinks.length, `Broken anchors at ${width}px`);
     check(metrics.equalServices, `Unequal service capsules at ${width}px`);
+    check(Object.values(metrics.mobileCapsules).every(Boolean), `Mobile capsules are not equal, linear, or rounded at ${width}px`);
+    check(metrics.desktopAudienceAligned, `Who We Work With capsules must align image-first at ${width}px`);
     check(metrics.clippedNavControls === 0, `Clipped navigation controls at ${width}px`);
     check(metrics.navLogoLoaded, `Navbar logo failed to load at ${width}px`);
     check(!metrics.founderPlaceholderOverlap, `Portrait placeholder overlaps caption at ${width}px`);
@@ -130,6 +138,13 @@ try {
     check(!metrics.heroArcOverlapsContent, `Hero arc overlaps content at ${width}px`);
     check(metrics.seamlessIntro, `Navbar / hero background continuity at ${width}px`);
     check(metrics.headings.every(size => size <= 44.1), `Oversized section heading at ${width}px`);
+  }
+  const desktopFirstScreens = [];
+  for (const [width, height] of [[1024,600],[1280,720],[1366,768],[1440,900],[1920,1080]]) {
+    await viewport(width,height);
+    const layout = await evaluate(`(()=>{scrollTo({top:0,behavior:'instant'});const shell=document.querySelector('.site-shell').getBoundingClientRect(),trust=document.querySelector('.trust-bar').getBoundingClientRect(),services=document.querySelector('#our-services').getBoundingClientRect(),actions=document.querySelector('.hero-actions').getBoundingClientRect();return {viewport:innerHeight,shellBottom:shell.bottom,trustBottom:trust.bottom,servicesTop:services.top,actionsClear:actions.bottom<trust.top-16};})()`);
+    desktopFirstScreens.push({width,height,...layout});
+    check(Math.abs(layout.trustBottom-height)<2&&layout.servicesTop>=height-2&&layout.actionsClear, `Desktop first-screen fit at ${width}x${height}px`);
   }
   await viewport(1920, 1080);
   const tickerLoop = await evaluate(`(async()=>{const track=document.querySelector('.trust-track'),animation=track.getAnimations()[0],duration=animation.effect.getTiming().duration,viewport=document.querySelector('.trust-viewport').getBoundingClientRect();animation.pause();const samples=[];for(const progress of [0,.25,.5,.75,.999999,1,1.25]){animation.currentTime=duration*progress;const sets=[...track.querySelectorAll('.trust-set')].map(e=>e.getBoundingClientRect());samples.push(sets[0].left<=viewport.left+1&&sets[1].right>=viewport.right-1&&Math.abs(sets[0].right-sets[1].left)<1);}animation.currentTime=0;const start=track.getBoundingClientRect().left;animation.currentTime=duration;const seamlessReset=Math.abs(track.getBoundingClientRect().left-start)<1;animation.play();return {covered:samples.every(Boolean),seamlessReset};})()`);
@@ -190,7 +205,7 @@ try {
   const noScript = await evaluate(`({pending:document.querySelectorAll('[data-reveal-state="pending"]').length,servicesOpacity:getComputedStyle(document.querySelector('.services-header')).opacity})`);
   check(noScript.pending === 0 && noScript.servicesOpacity === "1", "No-JavaScript readability");
   check(!errors.length, `Browser runtime errors: ${errors.join(', ')}`);
-  const report = { base, results, tickerLoop, tickerHover, sticky, interactions, menuChecks, safeArea, reducedMotion, noScript, errors, failures };
+  const report = { base, results, desktopFirstScreens, tickerLoop, tickerHover, sticky, interactions, menuChecks, safeArea, reducedMotion, noScript, errors, failures };
   writeFileSync(join(output, "report.json"), JSON.stringify(report, null, 2));
   console.log(JSON.stringify({ checks: failures.length ? "FAILED" : "PASSED", viewports: results.map(r=>r.width), screenshots: output, failures, errors }, null, 2));
   if (failures.length) process.exitCode = 1;

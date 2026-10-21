@@ -56,12 +56,15 @@
 
 .button, .ending-action {
   --button-height: 52px;
+  --button-icon-size: 34px;
+  --button-icon-bg: var(--surface);
+  --button-icon-color: var(--ink);
   min-height: var(--button-height);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  padding: 13px 25px;
+  gap: 12px;
+  padding: 8px 9px 8px 20px;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   font-size: 14px;
@@ -69,7 +72,18 @@
   font-weight: 600;
   transition: color var(--duration), background var(--duration), border-color var(--duration), box-shadow var(--duration), transform var(--duration) var(--ease-out);
 }
-.button svg, .ending-action svg { flex-shrink: 0; transition: transform var(--duration) var(--ease-out); }
+.button-icon {
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  display: grid;
+  flex: 0 0 var(--button-icon-size);
+  place-items: center;
+  border-radius: 50%;
+  background: var(--button-icon-bg);
+  color: var(--button-icon-color);
+  transition: color var(--duration), background var(--duration), transform var(--duration) var(--ease-out);
+}
+.button-icon svg { width: 17px; height: 17px; display: block; transition: transform var(--duration) var(--ease-out); }
 .button:active, .ending-action:not(:disabled):active { transform: translateY(1px); }
 
 /* JS only opts below-the-fold elements into reveals; no-JS stays readable. */
@@ -77,7 +91,8 @@
 [data-reveal-state="visible"] { opacity: 1; transform: none; transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .button:hover svg, .ending-action:not(:disabled):hover svg { transform: translate(2px, -2px); }
+  .button:hover .button-icon, .ending-action:not(:disabled):hover .button-icon { transform: rotate(8deg); }
+  .button:hover .button-icon svg, .ending-action:not(:disabled):hover .button-icon svg { transform: translate(1px, -1px); }
 }
 
 @media (max-width: 639px) {

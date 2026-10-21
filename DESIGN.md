@@ -14,7 +14,7 @@ The existing concepts and approved copy are retained. Shared tokens live in `src
 ## Section treatment
 
 - Hero: navy/cream editorial type with a sweeping open SVG horizon, soft blue light, a small cream highlight, and no forced viewport height. A transparent, page-wide sticky header floats over the same continuous navy intro, with reserved top space and anchor offsets. Arc geometry is static, with reduced-motion-aware ambient light animation.
-- Services: equal, outward-staggered capsules with readable navy text, defined blue-gray borders, restrained frosted-glass surfaces, and soft elevation. Static blue ambient gradients and a fading fine grid add depth to the cream section; opaque surfaces provide a fallback without backdrop-filter support.
+- Services: equal, outward-staggered capsules with readable navy text, defined blue-gray borders, restrained frosted-glass surfaces, and soft elevation. Static blue ambient gradients and a consistently visible, full-section fine grid add depth to the cream section; opaque surfaces provide a fallback without backdrop-filter support.
 - Audience: quieter blue/cream capsules and precise image/text alignment. Decorative orbit rings removed.
 - Why Nova: text-only editorial split layout with smaller Lucide icons and the original flowing connector. The desk image was removed following feedback; its source file remains untouched.
 - Founder: navy panel retained, feature points simplified into two lightweight rows, stats presented as an unboxed editorial strip. The approved portrait placeholder remains until the real photograph is supplied.
