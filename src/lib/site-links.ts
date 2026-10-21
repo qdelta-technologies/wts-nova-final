@@ -10,7 +10,7 @@ export const siteLinks: {
 } = {
   talk: null,
   whatsapp: null,
-  instagram: null,
+  instagram: "https://www.instagram.com/wtsnova/",
   work: null,
   // Display-resolution lossless copy of the supplied artwork (288px covers 3x at the
   // 94px navbar/footer size). The untouched full-resolution files stay in public/images.
