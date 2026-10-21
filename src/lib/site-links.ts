@@ -12,6 +12,8 @@ export const siteLinks: {
   whatsapp: null,
   instagram: null,
   work: null,
-  logo: "/images/wts-nova-logo-dark.png",
-  navLogo: "/images/wts-nova-logo-dark.png",
+  // Display-resolution lossless copy of the supplied artwork (288px covers 3x at the
+  // 94px navbar/footer size). The untouched full-resolution files stay in public/images.
+  logo: "/images/wts-nova-logo-nav.webp",
+  navLogo: "/images/wts-nova-logo-nav.webp",
 };

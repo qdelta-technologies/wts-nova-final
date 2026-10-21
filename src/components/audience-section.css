@@ -37,15 +37,17 @@
   .audience-capsule { min-height: 210px; }
 }
 @media (max-width: 639px) {
-  .audience-capsules { gap: 16px; grid-auto-rows: 1fr; }
-  .audience-capsule, .audience-creators { display: grid; grid-template-columns: minmax(0, 1fr) 80px; align-content: center; align-items: center; column-gap: 18px; row-gap: 18px; width: 100%; padding: 38px 32px; border-radius: 76px; min-height: 0; }
-  .audience-visual { grid-column: 2; grid-row: 1; width: 80px; height: 80px; }
+  .audience-capsules { gap: 14px; grid-auto-rows: 1fr; }
+  .audience-capsule, .audience-creators { display: grid; grid-template-columns: minmax(0, 1fr) 72px; align-content: center; align-items: center; column-gap: 14px; row-gap: 14px; width: 100%; padding: 30px 28px; border-radius: 70px; min-height: 0; }
+  .audience-visual { grid-column: 2; grid-row: 1; width: 72px; height: 72px; }
+  .audience-badge { width: 32px; height: 32px; }
+  .audience-badge svg { width: 15px; height: 15px; }
   .audience-creators .audience-badge { left: -2px; right: auto; }
   .audience-copy { display: contents; }
   .audience-number { grid-column: 1; grid-row: 1; align-self: start; margin: 0; }
-  .audience-copy h3 { grid-column: 1; grid-row: 1; align-self: start; font-size: 24px; margin: 20px 0 0; text-wrap: pretty; }
-  .audience-copy p { grid-column: 1 / -1; grid-row: 2; }
+  .audience-copy h3 { grid-column: 1; grid-row: 1; align-self: start; font-size: 22px; margin: 19px 0 0; text-wrap: pretty; }
+  .audience-copy p { grid-column: 1 / -1; grid-row: 2; line-height: 1.65; }
 }
 @media (max-width: 359px) {
-  .audience-capsule, .audience-creators { column-gap: 12px; padding-inline: 26px; border-radius: 68px; }
+  .audience-capsule, .audience-creators { column-gap: 12px; padding-inline: 26px; border-radius: 66px; }
 }

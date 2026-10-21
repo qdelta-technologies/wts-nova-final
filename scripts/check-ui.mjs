@@ -104,7 +104,10 @@ try {
       mobileCapsules:(()=>{if(innerWidth>=640)return {equal:true,linear:true,rounded:true};const groups=['.service-capsule','.audience-capsule'].map(selector=>[...document.querySelectorAll(selector)]);return {equal:groups.every(cards=>new Set(cards.map(card=>card.offsetHeight)).size===1),linear:groups.every(cards=>cards.every(card=>{const r=card.getBoundingClientRect(),i=card.querySelector('img').getBoundingClientRect(),text=card.querySelector('h3').getBoundingClientRect();return Math.abs(r.left-cards[0].getBoundingClientRect().left)<1&&Math.abs(r.width-cards[0].getBoundingClientRect().width)<1&&i.left>text.left&&text.right<=i.left+1;})),rounded:groups.every(cards=>cards.every(card=>parseFloat(getComputedStyle(card).borderTopLeftRadius)>=60))};})(),
       desktopAudienceAligned:(()=>{if(innerWidth<640)return true;const cards=[...document.querySelectorAll('.audience-capsule')];const first=cards[0].getBoundingClientRect();return cards.every(card=>{const r=card.getBoundingClientRect(),image=card.querySelector('img').getBoundingClientRect(),heading=card.querySelector('h3').getBoundingClientRect();return Math.abs(r.left-first.left)<1&&Math.abs(r.width-first.width)<1&&image.left<heading.left;});})(),
       clippedNavControls:[...document.querySelectorAll('.navbar .button,.navbar .menu-button')].filter(e=>{const b=e.getBoundingClientRect(),n=document.querySelector('.navbar').getBoundingClientRect();return b.width>0&&(b.left<n.left||b.right>n.right);}).length,
-      navLogoLoaded:(()=>{const img=document.querySelector('.brand-logo');return !!img&&img.complete&&img.naturalWidth>0&&img.getAttribute('src')==='/images/wts-nova-logo-dark.png';})(),
+      navLogoLoaded:(()=>{const img=document.querySelector('.brand-logo');return !!img&&img.complete&&img.naturalWidth>0&&img.getAttribute('src')==='/images/wts-nova-logo-nav.webp';})(),
+      optimizedEditorialImages:[...document.querySelectorAll('.services-section img,.audience-section img')].every(img=>img.getAttribute('src')?.includes('.webp')),
+      mobileBlurDisabled:innerWidth>=640||getComputedStyle(document.querySelector('.service-capsule')).backdropFilter==='none',
+      narrowFooterSingleColumn:innerWidth>359||getComputedStyle(document.querySelector('.agency-footer-grid')).gridTemplateColumns.split(' ').length===1,
       founderPlaceholderOverlap:(()=>{const n=document.querySelector('.founder-placeholder-note'),c=document.querySelector('.founder-caption');return !!n&&n.getBoundingClientRect().bottom>c.getBoundingClientRect().top-8;})(),
       whyImageCount:document.querySelectorAll('#why-wts-nova img').length,
       whyColumnsAligned:innerWidth<900||Math.abs(document.querySelector('.why-nova-editorial').getBoundingClientRect().top-document.querySelector('.why-nova-benefits').getBoundingClientRect().top)<1,
@@ -132,6 +135,8 @@ try {
     check(metrics.desktopAudienceAligned, `Who We Work With capsules must align image-first at ${width}px`);
     check(metrics.clippedNavControls === 0, `Clipped navigation controls at ${width}px`);
     check(metrics.navLogoLoaded, `Navbar logo failed to load at ${width}px`);
+    check(metrics.optimizedEditorialImages && metrics.mobileBlurDisabled, `Editorial image or mobile blur optimization at ${width}px`);
+    check(metrics.narrowFooterSingleColumn, `Footer must use one column on very narrow phones at ${width}px`);
     check(!metrics.founderPlaceholderOverlap, `Portrait placeholder overlaps caption at ${width}px`);
     check(metrics.whyImageCount === 0 && metrics.whyColumnsAligned, `Text-only Why Nova alignment at ${width}px`);
     check(metrics.logoCentered, `Footer logo not centered at ${width}px`);
@@ -164,10 +169,18 @@ try {
   }
   await viewport(1440);
   for (const [name, selector] of Object.entries({ hero: "#home", services: "#our-services", audience: "#who-we-work-with", why: "#why-wts-nova", founder: "#about-wts-nova", cta: "#get-in-touch", footer: "#footer" })) await capture(`desktop-${name}`, selector);
-  check(await evaluate("document.querySelector('.agency-footer-original-logo').complete && document.querySelector('.agency-footer-original-logo').naturalWidth > 0 && document.querySelector('.agency-footer-original-logo').getAttribute('src') === '/images/wts-nova-logo-dark.png'"), "Footer logo failed to load after scrolling into view");
+  check(await evaluate("[...document.querySelectorAll('.services-section img,.audience-section img')].every(img => img.complete && img.naturalWidth > 0)"), "Optimized editorial photos failed to load");
+  check(await evaluate("document.querySelector('.agency-footer-original-logo').complete && document.querySelector('.agency-footer-original-logo').naturalWidth > 0 && document.querySelector('.agency-footer-original-logo').getAttribute('src') === '/images/wts-nova-logo-nav.webp'"), "Footer logo failed to load after scrolling into view");
 
   await viewport(375, 812);
   for (const [name, selector] of Object.entries({ hero: "#home", services: "#our-services", audience: "#who-we-work-with", why: "#why-wts-nova", founder: "#about-wts-nova", footer: "#footer" })) await capture(`mobile-${name}`, selector);
+  await viewport(320, 568);
+  await capture("small-phone-services", "#our-services");
+  await capture("small-phone-founder", "#about-wts-nova");
+  await viewport(768, 1024);
+  await capture("tablet-services", "#our-services");
+  await capture("tablet-founder", "#about-wts-nova");
+  await viewport(375, 812);
 
   const interactions = await evaluate(`(async()=>{const menu=document.querySelector('.menu-button');menu.click();await new Promise(r=>setTimeout(r,80));const opens=menu.getAttribute('aria-expanded')==='true';document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await new Promise(r=>setTimeout(r,80));const closes=menu.getAttribute('aria-expanded')==='false';return {opens,closes};})()`);
   check(Object.values(interactions).every(Boolean), "Mobile navigation interactions");

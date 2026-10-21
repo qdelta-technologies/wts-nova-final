@@ -22,7 +22,7 @@ export default function Home() {
       <SectionDivider />
       <AudienceSection />
       <WhyNovaSection />
-      <FounderSection />
+      <FounderSection portraitSrc="/images/founder-portrait.png" />
       <SiteEnding />
       <PreviewNotice />
       <PageReveals />

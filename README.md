@@ -26,6 +26,11 @@ For a production preview, run `npm run build` followed by `npm start`.
 ## Approval-stage notes
 
 - The navbar, footer badge, and favicon use the exact dark-background logo supplied at `C:\Users\mdq29\Desktop\WTS Nova\WTS-Logos\logo-tr-for-dark-bg.png`. It was copied byte-for-byte to `public/images/wts-nova-logo-dark.png` (SHA-256 verified). Its transparent canvas is framed with CSS; no logo pixels or colors were edited. The earlier, incorrect horizontal lockup is not used.
+- Navbar and footer serve a lossless WebP of that exact logo (`wts-nova-logo-dark.webp`, 140 KB vs 312 KB PNG); a decoded pixel comparison confirmed zero differences on visible pixels. The original PNG remains untouched for archive/branding.
+- Because the mark is displayed at 94px, the page loads a 288px lossless derivative (`wts-nova-logo-nav.webp`, 18 KB) that covers 3x screens. It keeps the full artwork, transparent canvas, and colors; only the raster resolution changes, so the mark is never redrawn.
+- `src/app/icon.png` (192px, 29 KB) and `src/app/favicon.ico` (16/32/48px PNG entries, 5 KB) are generated from the supplied square logo instead of the previous 218 KB/83 KB files.
+- Service and audience images use responsive 448px WebP derivatives while their original JPG files remain in `public/images/`. They stay lazy-loaded through `next/image`. The unused 28 MB warehouse PNG is not fetched by this page.
+- `next.config.ts` enables AVIF with WebP fallback for `next/image`, so supported browsers download the smallest encode. Measured on a throttled mobile profile (390px, 4× CPU, 1.6 Mbps), the first load dropped from 440 KB to 244 KB with zero layout shift, and the hero stays the only above-the-fold section.
 - Home, Services, Who We Help, About Us, and Contact navigate to completed page sections. CTA contact buttons and social profiles remain explicitly unavailable; configure verified destinations in `src/lib/site-links.ts`. No contact details have been invented.
 - All supplied hero and trust-bar copy is preserved, including “SOCIAL MEIDA MARKETING”.
 - Manrope and Instrument Serif (regular and italic) are configured once in `src/app/layout.tsx`, downloaded at build time by `next/font`, and self-hosted in production. The initial build requires internet access.

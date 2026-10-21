@@ -47,9 +47,13 @@ export function SiteEnding() {
 
       <footer id="footer" className="agency-footer" aria-label="WTS Nova footer">
         <div className="agency-footer-panel">
-          <div className="agency-footer-pattern" aria-hidden="true" />
+          <div className="agency-footer-pattern" aria-hidden="true">
+            <div className="agency-footer-particles">
+              {Array.from({ length: 8 }, (_, index) => <span key={index} />)}
+            </div>
+          </div>
           <a href="#home" aria-label="WTS Nova home" className="agency-footer-logo">
-            {siteLinks.logo ? <Image src={siteLinks.logo} width={1254} height={1254} alt="WTS Nova" className="agency-footer-original-logo" unoptimized /> : <span className="agency-footer-logo-placeholder">WTS<br /><span>NOVA</span></span>}
+            {siteLinks.logo ? <Image src={siteLinks.logo} width={288} height={288} alt="WTS Nova" className="agency-footer-original-logo" unoptimized /> : <span className="agency-footer-logo-placeholder">WTS<br /><span>NOVA</span></span>}
           </a>
           <div className="agency-footer-inner">
             <div className="agency-footer-brand" data-reveal>

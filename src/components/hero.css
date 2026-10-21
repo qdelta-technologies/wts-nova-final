@@ -45,7 +45,7 @@
 }
 
 .hero-content { position: relative; width: 100%; max-width: var(--container); margin: 0 auto; text-align: center; }
-.hero-label { display: inline-flex; justify-content: center; align-items: center; gap: 9px; color: #a0c4d7; font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: .16em; }
+.hero-label { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 9px 16px; border: 1px solid #66a3bf4d; border-radius: 999px; background: #66a3bf12; color: #a0c4d7; font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: .16em; }
 .hero-label > svg { color: #a0c4d7; }
 .hero-heading { margin: 24px auto 0; max-width: 1080px; font-size: var(--type-display); line-height: 1.16; font-weight: 650; }
 .headline-business { display: block; font-size: var(--type-display); line-height: 1.16; letter-spacing: -.045em; text-wrap: balance; }
@@ -69,13 +69,13 @@
   .hero { padding-top: clamp(24px, 5svh, 44px); padding-bottom: clamp(82px, 11svh, 120px); }
 }
 @media (max-width: 639px) {
-  .hero { padding-block: 58px 144px; }
-  .hero-label { font-size: 9px; letter-spacing: .1em; gap: 7px; }
-  .hero-heading { margin-top: 24px; }
+  .hero { padding-block: 48px 124px; }
+  .hero-label { padding: 8px 12px; font-size: 9px; letter-spacing: .1em; gap: 7px; }
+  .hero-heading { margin-top: 21px; }
   .headline-business { max-width: 480px; margin-inline: auto; }
-  .headline-social { font-size: clamp(38px, 9.5vw, 50px); margin-top: 12px; max-width: 480px; margin-inline: auto; }
-  .hero-description { max-width: 360px; margin-top: 22px; }
-  .hero-actions { flex-direction: column; align-items: center; margin-top: 24px; gap: 10px; }
+  .headline-social { font-size: clamp(36px, 9.3vw, 48px); margin-top: 10px; max-width: 480px; margin-inline: auto; }
+  .hero-description { max-width: 360px; margin-top: 18px; line-height: 1.65; }
+  .hero-actions { flex-direction: column; align-items: center; margin-top: 22px; gap: 10px; }
   .hero-actions .button { width: auto; max-width: 100%; }
   .hero-horizon { height: 140px; bottom: 26.5px; }
   .hero-atmosphere::after { left: 5%; right: 5%; height: 170px; bottom: -60px; filter: blur(12px); }

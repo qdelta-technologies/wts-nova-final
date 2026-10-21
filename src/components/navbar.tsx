@@ -59,7 +59,7 @@ export function Navbar() {
       <nav aria-label="Main navigation" className="navbar">
         <a href="#home" aria-label="WTS Nova home" className="brand">
           {siteLinks.navLogo ? (
-            <Image src={siteLinks.navLogo} width={1254} height={1254} alt="WTS Nova" className="brand-logo" priority unoptimized />
+            <Image src={siteLinks.navLogo} width={288} height={288} alt="WTS Nova" className="brand-logo" loading="eager" fetchPriority="high" unoptimized />
           ) : (
             <span className="brand-name">WTS <span className="font-normal">NOVA</span><span className="brand-period">.</span></span>
           )}

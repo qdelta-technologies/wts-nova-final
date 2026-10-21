@@ -98,14 +98,18 @@
 @media (max-width: 639px) {
   :root {
     --gutter: max(20px, var(--safe-left), var(--safe-right));
-    --section-space: 56px;
-    --section-gap: 32px;
-    --type-display: clamp(34px, 8.5vw, 46px);
-    --type-section: clamp(32px, 7.7vw, 38px);
-    --type-card: 24px;
+    --section-space: 50px;
+    --section-gap: 28px;
+    --type-display: clamp(32px, 8.2vw, 44px);
+    --type-section: clamp(30px, 7.5vw, 36px);
+    --type-card: 22px;
     --type-label: 10px;
     --radius-lg: 24px;
   }
+  .button, .ending-action { --button-height: 48px; --button-icon-size: 30px; }
+  .button-icon svg { width: 16px; height: 16px; }
+  [data-reveal-state="pending"] { transform: translateY(8px); }
+  [data-reveal-state="visible"] { transition-duration: 420ms; }
 }
 @media (prefers-reduced-motion: reduce) {
   [data-reveal-state] { opacity: 1; transform: none; transition: none; }

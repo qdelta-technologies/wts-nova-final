@@ -22,11 +22,16 @@ export function FounderStats() {
 
     let frame = 0;
     let startedAt: number | undefined;
-    const duration = 1600;
+    let lastPaint = -Infinity;
+    const duration = 1200;
     const tick = (time: number) => {
       startedAt ??= time;
       const elapsed = Math.min((time - startedAt) / duration, 1);
-      setProgress(1 - Math.pow(1 - elapsed, 3));
+      // Cap React updates around 30fps; the browser can still schedule each frame.
+      if (elapsed === 1 || time - lastPaint >= 32) {
+        setProgress(1 - Math.pow(1 - elapsed, 3));
+        lastPaint = time;
+      }
       if (elapsed < 1) frame = requestAnimationFrame(tick);
     };
     const observer = new IntersectionObserver((entries) => {

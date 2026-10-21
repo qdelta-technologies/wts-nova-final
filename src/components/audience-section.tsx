@@ -20,7 +20,7 @@ export function AudienceSection() {
         <ol className="audience-capsules">
           <li className="audience-capsule audience-business" data-reveal>
             <div className="audience-visual">
-              <div className="audience-photo"><Image src="/images/audience-businesses.jpg" alt="A warmly lit independent café with a handwritten menu and welcoming interior." fill sizes="(max-width: 639px) 80px, 128px" /></div>
+              <div className="audience-photo"><Image src="/images/audience-businesses.webp" alt="A warmly lit independent café with a handwritten menu and welcoming interior." fill sizes="(max-width: 639px) 72px, (max-width: 1099px) 104px, 128px" /></div>
               <span className="audience-badge"><AudienceMark /></span>
             </div>
             <div className="audience-copy">
@@ -31,7 +31,7 @@ export function AudienceSection() {
           </li>
           <li className="audience-capsule audience-creators" data-reveal>
             <div className="audience-visual">
-              <div className="audience-photo"><Image src="/images/audience-creators.jpg" alt="A camera and printed photographs arranged on a creative workspace." fill sizes="(max-width: 639px) 80px, 128px" /></div>
+              <div className="audience-photo"><Image src="/images/audience-creators.webp" alt="A camera and printed photographs arranged on a creative workspace." fill sizes="(max-width: 639px) 72px, (max-width: 1099px) 104px, 128px" /></div>
               <span className="audience-badge"><AudienceMark creator /></span>
             </div>
             <div className="audience-copy">

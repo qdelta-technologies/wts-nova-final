@@ -90,6 +90,7 @@ a { text-decoration: none; }
   .nav-cta { display: none; }
   .trust-bar { padding-block: 18px; }
   .trust-item { font-size: 9px; }
+  .navbar { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
   .trust-separator { min-width: 56px; }
 }
 @media (max-width: 359px) {
