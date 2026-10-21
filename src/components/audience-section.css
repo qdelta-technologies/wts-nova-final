@@ -1,0 +1,50 @@
+.audience-section { padding: var(--section-space) var(--gutter); background: radial-gradient(ellipse at 50% 100%, #3368a02e, transparent 65%), var(--ink); color: var(--on-dark); scroll-margin-top: 24px; }
+.audience-layout { max-width: var(--container); margin-inline: auto; display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); align-items: center; gap: var(--section-gap); }
+.audience-header { min-width: 0; max-width: 400px; }
+.audience-label { margin: 0 0 18px; color: #a0c4d7; }
+.audience-heading span { display: block; }
+.audience-heading span + span { margin-top: 3px; }
+.audience-intro { margin: 22px 0 0; font-size: var(--type-body); line-height: var(--leading-body); color: var(--on-dark-muted); text-wrap: pretty; }
+.audience-rule { display: block; width: 36px; height: 1px; margin-top: 24px; background: var(--line-blue); }
+.audience-capsules { display: grid; grid-auto-rows: 1fr; gap: 20px; padding: 0; margin: 0; min-width: 0; list-style: none; }
+.audience-capsule { display: flex; align-items: center; gap: 22px; width: calc(100% - 16px); min-width: 0; min-height: 224px; padding: 24px 36px 24px 18px; border: 1px solid var(--line-dark); border-radius: var(--radius-pill); transition: transform var(--duration) var(--ease-out), box-shadow var(--duration); }
+.audience-business { justify-self: end; background: #66a3bf0f; }
+.audience-creators { justify-self: start; flex-direction: row-reverse; padding: 24px 18px 24px 40px; background: #ffffff05; }
+.audience-visual { position: relative; flex: 0 0 128px; width: 128px; height: 128px; }
+.audience-photo { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 50%; }
+.audience-photo img { object-fit: cover; transition: transform 500ms var(--ease-out); }
+.audience-badge { position: absolute; top: -2px; left: -2px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--ink); background: var(--ink); color: var(--on-dark); }
+.audience-badge svg { width: 17px; height: 17px; }
+.audience-creators .audience-badge { left: auto; right: -2px; background: var(--accent); }
+.audience-copy { flex: 1; min-width: 0; text-align: left; }
+.audience-number { display: block; font-size: 10px; line-height: 1.5; letter-spacing: .1em; margin-bottom: 8px; color: #a0c4d7; }
+.audience-copy h3 { margin: 0 0 12px; font-family: var(--font-serif), Georgia, serif; font-size: var(--type-card); font-weight: 400; line-height: 1.16; letter-spacing: -.015em; text-wrap: balance; }
+.audience-copy p { font-size: var(--type-body); line-height: var(--leading-body); color: var(--on-dark-muted); margin: 0; text-wrap: pretty; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .audience-capsule:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+  .audience-capsule:hover img { transform: scale(1.025); }
+}
+@media (min-width: 900px) and (max-width: 1099px) {
+  .audience-layout { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 32px; }
+  .audience-capsule { gap: 18px; border-radius: 48px; }
+  .audience-visual { flex-basis: 104px; width: 104px; height: 104px; }
+}
+@media (max-width: 899px) {
+  .audience-layout { grid-template-columns: 1fr; }
+  .audience-header { max-width: 600px; }
+  .audience-heading span { display: inline; }
+  .audience-intro { max-width: 540px; }
+  .audience-capsule { min-height: 210px; }
+}
+@media (max-width: 639px) {
+  .audience-capsules { gap: 16px; grid-auto-rows: auto; }
+  .audience-capsule { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: center; column-gap: 18px; row-gap: 18px; width: 100%; padding: 24px; border-radius: var(--radius-lg); min-height: 0; }
+  .audience-creators { grid-template-columns: minmax(0, 1fr) 80px; }
+  .audience-visual { grid-column: 1; grid-row: 1; width: 80px; height: 80px; }
+  .audience-creators .audience-visual { grid-column: 2; }
+  .audience-copy { display: contents; }
+  .audience-number { grid-column: 2; grid-row: 1; align-self: start; margin: 0; }
+  .audience-copy h3 { grid-column: 2; grid-row: 1; align-self: start; font-size: 24px; margin: 20px 0 0; text-wrap: pretty; }
+  .audience-creators .audience-number, .audience-creators h3 { grid-column: 1; }
+  .audience-copy p { grid-column: 1 / -1; grid-row: 2; }
+}
