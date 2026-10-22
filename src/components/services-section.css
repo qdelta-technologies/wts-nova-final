@@ -69,8 +69,8 @@
   .service-capsule-right { inset-inline-start: min(40px, calc(var(--gutter) - 16px)); }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .service-capsule:hover { transform: translateY(-2px); border-color: #3368a080; box-shadow: 0 16px 36px #0b193312, 0 3px 8px #0b193308, inset 0 1px 0 #fff, inset 0 -1px 0 #527a9d0d; }
-  .service-capsule:hover img { transform: scale(1.025); }
+  .service-capsule:hover { transform: translate3d(0, -6px, 0); border-color: #3368a099; box-shadow: 0 22px 42px #0b19331a, 0 4px 10px #0b19330a, inset 0 1px 0 #fff, inset 0 -1px 0 #527a9d0d; }
+  .service-capsule:hover img { transform: scale(1.06); }
 }
 @media (max-width: 899px) {
   .service-capsule { width: 100%; gap: 22px; padding: 24px 30px 24px 20px; }

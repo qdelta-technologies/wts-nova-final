@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Sparkle } from "./icons";
 import { FounderStats } from "./founder-stats";
 import "./founder-section.css";
 
@@ -19,7 +18,6 @@ export function FounderSection({ portraitSrc }: { portraitSrc?: string }) {
                 <span className="founder-placeholder-note">To be added</span>
               </div>
             )}
-            <span className="founder-tag"><Sparkle className="h-3 w-3" /> FOUNDER</span>
             <figcaption className="founder-caption">
               <p>Shaik Abdul Wahab</p>
               <span>Founder &amp; Content Creator</span>

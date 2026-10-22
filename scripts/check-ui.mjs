@@ -105,9 +105,11 @@ try {
       desktopAudienceAligned:(()=>{if(innerWidth<640)return true;const cards=[...document.querySelectorAll('.audience-capsule')];const first=cards[0].getBoundingClientRect();return cards.every(card=>{const r=card.getBoundingClientRect(),image=card.querySelector('img').getBoundingClientRect(),heading=card.querySelector('h3').getBoundingClientRect();return Math.abs(r.left-first.left)<1&&Math.abs(r.width-first.width)<1&&image.left<heading.left;});})(),
       clippedNavControls:[...document.querySelectorAll('.navbar .button,.navbar .menu-button')].filter(e=>{const b=e.getBoundingClientRect(),n=document.querySelector('.navbar').getBoundingClientRect();return b.width>0&&(b.left<n.left||b.right>n.right);}).length,
       navLogoLoaded:(()=>{const img=document.querySelector('.brand-logo');return !!img&&img.complete&&img.naturalWidth>0&&img.getAttribute('src')==='/images/wts-nova-logo-nav.webp';})(),
+      contactFormReady:(()=>{const form=document.querySelector('.contact-form'),submit=form?.querySelector('button[type="submit"]'),fields=form?[...form.querySelectorAll('input,select,textarea:not(.contact-copy-fallback)')]:[];return !!form&&!!submit&&!submit.disabled&&submit.textContent.includes('Submit inquiry')&&fields.length===5&&fields.every(field=>field.id&&form.querySelector('label[for="'+field.id+'"]'));})(),
+      noComingSoonCopy:!document.body.innerText.toLowerCase().includes('coming soon'),
       optimizedEditorialImages:[...document.querySelectorAll('.services-section img,.audience-section img')].every(img=>img.getAttribute('src')?.includes('.webp')),
       mobileBlurDisabled:innerWidth>=640||getComputedStyle(document.querySelector('.service-capsule')).backdropFilter==='none',
-      narrowFooterSingleColumn:innerWidth>359||getComputedStyle(document.querySelector('.agency-footer-grid')).gridTemplateColumns.split(' ').length===1,
+      narrowFooterTwoColumns:innerWidth>359||getComputedStyle(document.querySelector('.agency-footer-grid')).gridTemplateColumns.split(' ').length===2,
       founderPlaceholderOverlap:(()=>{const n=document.querySelector('.founder-placeholder-note'),c=document.querySelector('.founder-caption');return !!n&&n.getBoundingClientRect().bottom>c.getBoundingClientRect().top-8;})(),
       whyImageCount:document.querySelectorAll('#why-wts-nova img').length,
       whyColumnsAligned:innerWidth<900||Math.abs(document.querySelector('.why-nova-editorial').getBoundingClientRect().top-document.querySelector('.why-nova-benefits').getBoundingClientRect().top)<1,
@@ -135,8 +137,9 @@ try {
     check(metrics.desktopAudienceAligned, `Who We Work With capsules must align image-first at ${width}px`);
     check(metrics.clippedNavControls === 0, `Clipped navigation controls at ${width}px`);
     check(metrics.navLogoLoaded, `Navbar logo failed to load at ${width}px`);
+    check(metrics.contactFormReady && metrics.noComingSoonCopy, `Contact form must be usable and no dead-link notices shown at ${width}px`);
     check(metrics.optimizedEditorialImages && metrics.mobileBlurDisabled, `Editorial image or mobile blur optimization at ${width}px`);
-    check(metrics.narrowFooterSingleColumn, `Footer must use one column on very narrow phones at ${width}px`);
+    check(metrics.narrowFooterTwoColumns, `Footer links should remain compact side-by-side columns at ${width}px`);
     check(!metrics.founderPlaceholderOverlap, `Portrait placeholder overlaps caption at ${width}px`);
     check(metrics.whyImageCount === 0 && metrics.whyColumnsAligned, `Text-only Why Nova alignment at ${width}px`);
     check(metrics.logoCentered, `Footer logo not centered at ${width}px`);
@@ -173,7 +176,7 @@ try {
   check(await evaluate("document.querySelector('.agency-footer-original-logo').complete && document.querySelector('.agency-footer-original-logo').naturalWidth > 0 && document.querySelector('.agency-footer-original-logo').getAttribute('src') === '/images/wts-nova-logo-nav.webp'"), "Footer logo failed to load after scrolling into view");
 
   await viewport(375, 812);
-  for (const [name, selector] of Object.entries({ hero: "#home", services: "#our-services", audience: "#who-we-work-with", why: "#why-wts-nova", founder: "#about-wts-nova", footer: "#footer" })) await capture(`mobile-${name}`, selector);
+  for (const [name, selector] of Object.entries({ hero: "#home", services: "#our-services", audience: "#who-we-work-with", why: "#why-wts-nova", founder: "#about-wts-nova", cta: "#get-in-touch", footer: "#footer" })) await capture(`mobile-${name}`, selector);
   await viewport(320, 568);
   await capture("small-phone-services", "#our-services");
   await capture("small-phone-founder", "#about-wts-nova");

@@ -1,4 +1,9 @@
 .hero {
+  --hero-content-x: 0px;
+  --hero-content-y: 0px;
+  --hero-atmosphere-x: 0px;
+  --hero-atmosphere-y: 0px;
+  --hero-horizon-x: 0px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -42,9 +47,10 @@
   width: 100%;
   height: 300px;
   overflow: visible;
+  transition: transform 900ms var(--ease-out);
 }
 
-.hero-content { position: relative; width: 100%; max-width: var(--container); margin: 0 auto; text-align: center; }
+.hero-content { position: relative; width: 100%; max-width: var(--container); margin: 0 auto; text-align: center; transition: transform 800ms var(--ease-out); }
 .hero-label { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 9px 16px; border: 1px solid #66a3bf4d; border-radius: 999px; background: #66a3bf12; color: #a0c4d7; font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: .16em; }
 .hero-label > svg { color: #a0c4d7; }
 .hero-heading { margin: 24px auto 0; max-width: 1080px; font-size: var(--type-display); line-height: 1.16; font-weight: 650; }
@@ -61,6 +67,9 @@
 @keyframes hero-light-drift { from { opacity: .55; transform: translateX(-4%); } to { opacity: .85; transform: translateX(4%); } }
 @keyframes hero-particle-rise { 0% { transform: translate3d(0, 0, 0) scale(.7); opacity: 0; } 12% { opacity: .42; } 72% { opacity: .24; } 100% { transform: translate3d(18px, -780px, 0) scale(1); opacity: 0; } }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-atmosphere { transform: translate3d(var(--hero-atmosphere-x), var(--hero-atmosphere-y), 0); transition: transform 1100ms var(--ease-out); }
+  .hero-content { transform: translate3d(var(--hero-content-x), var(--hero-content-y), 0); }
+  .hero-horizon { transform: translate3d(var(--hero-horizon-x), 0, 0); }
   .hero .button-dark:hover { background: #fff; border-color: #fff; box-shadow: 0 5px 24px #66a3bf26; transform: translateY(-2px); }
   .hero .button-light:hover { background: #3368a026; border-color: #a0c4d7; transform: translateY(-2px); }
 }
@@ -93,4 +102,5 @@
 @keyframes hero-particle-rise-mobile { 0% { transform: translate3d(0, 0, 0) scale(.7); opacity: 0; } 12% { opacity: .32; } 72% { opacity: .18; } 100% { transform: translate3d(10px, -650px, 0) scale(1); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
   .hero-atmosphere::after, .hero-particles span { animation: none; }
+  [data-reveal] { will-change: auto; }
 }

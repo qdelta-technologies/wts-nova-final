@@ -6,12 +6,17 @@ import { useEffect } from "react";
 export function PageReveals() {
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const elements = [...document.querySelectorAll<HTMLElement>("[data-reveal]")];
+    const elements = [...document.querySelectorAll<HTMLElement>("[data-reveal], [data-text-reveal]")];
     let observer: IntersectionObserver | undefined;
 
     function configure() {
       observer?.disconnect();
-      elements.forEach((element) => element.removeAttribute("data-reveal-state"));
+      let textIndex = 0;
+      elements.forEach((element, index) => {
+        element.removeAttribute("data-reveal-state");
+        const delay = element.hasAttribute("data-text-reveal") ? (textIndex++ % 3) * 65 : (index % 4) * 55;
+        element.style.setProperty("--reveal-delay", `${delay}ms`);
+      });
       if (preference.matches || !("IntersectionObserver" in window)) return;
 
       observer = new IntersectionObserver((entries) => {

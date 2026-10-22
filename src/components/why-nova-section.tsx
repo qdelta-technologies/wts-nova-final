@@ -17,14 +17,14 @@ export function WhyNovaSection() {
   return (
     <section id="why-wts-nova" aria-labelledby="why-nova-heading" className="why-nova-section">
       <div className="why-nova-layout">
-        <div className="why-nova-editorial" data-reveal>
+        <div className="why-nova-editorial">
           <header>
-            <p className="why-nova-label section-label">WHY WTS NOVA?</p>
-            <h2 id="why-nova-heading" className="why-nova-heading section-heading"><span>More Than</span> <span>Just Content.</span></h2>
-            <p className="why-nova-intro">Great social media isn’t just about posting. It’s about understanding your brand, creating with purpose, and showing up consistently.</p>
+          <p className="why-nova-label section-label" data-text-reveal>WHY WTS NOVA?</p>
+          <h2 id="why-nova-heading" className="why-nova-heading section-heading" data-text-reveal><span>More Than</span> <span>Just Content.</span></h2>
+          <p className="why-nova-intro" data-text-reveal>Great social media isn’t just about posting. It’s about understanding your brand, creating with purpose, and showing up consistently.</p>
           </header>
         </div>
-        <ol className="why-nova-benefits" data-reveal>
+        <ol className="why-nova-benefits">
           {benefits.map((benefit, index) => (
             <li className="why-nova-benefit" key={benefit.title}>
               {index < benefits.length - 1 && (
@@ -34,9 +34,9 @@ export function WhyNovaSection() {
               )}
               <div className="why-nova-icon"><BenefitIcon type={benefit.icon} /></div>
               <div className="why-nova-benefit-copy">
-                <span className="why-nova-number" aria-hidden="true">0{index + 1}</span>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.description}</p>
+                <span className="why-nova-number" aria-hidden="true" data-text-reveal>0{index + 1}</span>
+                <h3 data-text-reveal>{benefit.title}</h3>
+                <p data-text-reveal>{benefit.description}</p>
               </div>
             </li>
           ))}

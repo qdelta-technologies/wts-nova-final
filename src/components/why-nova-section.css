@@ -16,6 +16,8 @@
 .why-nova-number::after { content: ""; width: 20px; height: 1px; background: var(--line-blue); }
 .why-nova-benefit h3 { font-family: var(--font-serif), Georgia, serif; font-size: var(--type-card); font-weight: 400; letter-spacing: -.015em; line-height: 1.16; margin: 0 0 8px; text-wrap: balance; }
 .why-nova-benefit p { margin: 0; font-size: var(--type-body); line-height: var(--leading-body); color: var(--ink-muted); text-wrap: pretty; }
+[data-text-reveal][data-reveal-state="pending"] { opacity: 0; clip-path: inset(0 0 100% 0); filter: blur(4px); transform: translate3d(0, .35em, 0); }
+[data-text-reveal][data-reveal-state="visible"] { opacity: 1; clip-path: inset(0); filter: blur(0); transform: translate3d(0, 0, 0); transition: clip-path 720ms var(--ease-out) var(--reveal-delay, 0ms), opacity 480ms ease var(--reveal-delay, 0ms), filter 620ms var(--ease-out) var(--reveal-delay, 0ms), transform 680ms var(--ease-out) var(--reveal-delay, 0ms); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .why-nova-benefit:hover .why-nova-icon { transform: translateY(-2px); background: #e5ebed; }
 }

@@ -84,15 +84,16 @@
   transition: color var(--duration), background var(--duration), transform var(--duration) var(--ease-out);
 }
 .button-icon svg { width: 17px; height: 17px; display: block; transition: transform var(--duration) var(--ease-out); }
-.button:active, .ending-action:not(:disabled):active { transform: translateY(1px); }
+.button:active, .ending-action:active { transform: translateY(1px); }
 
 /* JS only opts below-the-fold elements into reveals; no-JS stays readable. */
-[data-reveal-state="pending"] { opacity: 0; transform: translateY(12px); }
-[data-reveal-state="visible"] { opacity: 1; transform: none; transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
+[data-reveal] { will-change: opacity, transform; }
+[data-reveal-state="pending"] { opacity: 0; transform: translate3d(0, 18px, 0) scale(.985); }
+[data-reveal-state="visible"] { opacity: 1; transform: none; transition: opacity 700ms var(--ease-out) var(--reveal-delay, 0ms), transform 800ms var(--ease-out) var(--reveal-delay, 0ms); }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .button:hover .button-icon, .ending-action:not(:disabled):hover .button-icon { transform: rotate(8deg); }
-  .button:hover .button-icon svg, .ending-action:not(:disabled):hover .button-icon svg { transform: translate(1px, -1px); }
+  .button:hover .button-icon, .ending-action:hover .button-icon { transform: rotate(8deg); }
+  .button:hover .button-icon svg, .ending-action:hover .button-icon svg { transform: translate(1px, -1px); }
 }
 
 @media (max-width: 639px) {
@@ -109,9 +110,9 @@
   }
   .button, .ending-action { --button-height: 46px; --button-icon-size: 28px; }
   .button-icon svg { width: 16px; height: 16px; }
-  [data-reveal-state="pending"] { transform: translateY(8px); }
+  [data-reveal-state="pending"] { transform: translate3d(0, 8px, 0); }
   [data-reveal-state="visible"] { transition-duration: 420ms; }
 }
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal-state] { opacity: 1; transform: none; transition: none; }
+  [data-reveal-state] { opacity: 1; clip-path: none; filter: none; transform: none; transition: none; }
 }

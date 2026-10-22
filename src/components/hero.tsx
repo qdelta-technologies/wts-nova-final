@@ -1,9 +1,55 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { Arrow, Sparkle } from "./icons";
 import "./hero.css";
 
 export function Hero() {
+  const hero = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const element = hero.current;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    let frame = 0;
+
+    const reset = () => {
+      element?.style.setProperty("--hero-content-x", "0px");
+      element?.style.setProperty("--hero-content-y", "0px");
+      element?.style.setProperty("--hero-atmosphere-x", "0px");
+      element?.style.setProperty("--hero-atmosphere-y", "0px");
+      element?.style.setProperty("--hero-horizon-x", "0px");
+    };
+    const move = (event: PointerEvent) => {
+      if (!element || reducedMotion.matches || !finePointer.matches) return;
+      const bounds = element.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - .5;
+      const y = (event.clientY - bounds.top) / bounds.height - .5;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        element.style.setProperty("--hero-content-x", `${Math.round(x * -8)}px`);
+        element.style.setProperty("--hero-content-y", `${Math.round(y * -5)}px`);
+        element.style.setProperty("--hero-atmosphere-x", `${Math.round(x * 18)}px`);
+        element.style.setProperty("--hero-atmosphere-y", `${Math.round(y * 12)}px`);
+        element.style.setProperty("--hero-horizon-x", `${Math.round(x * -14)}px`);
+      });
+    };
+
+    element?.addEventListener("pointermove", move, { passive: true });
+    element?.addEventListener("pointerleave", reset);
+    reducedMotion.addEventListener("change", reset);
+    finePointer.addEventListener("change", reset);
+    return () => {
+      cancelAnimationFrame(frame);
+      element?.removeEventListener("pointermove", move);
+      element?.removeEventListener("pointerleave", reset);
+      reducedMotion.removeEventListener("change", reset);
+      finePointer.removeEventListener("change", reset);
+    };
+  }, []);
+
   return (
-    <section aria-labelledby="hero-heading" className="hero">
+    <section ref={hero} aria-labelledby="hero-heading" className="hero">
       <div className="hero-atmosphere" aria-hidden="true">
         <div className="hero-particles">
           {Array.from({ length: 18 }, (_, index) => <span key={index} />)}

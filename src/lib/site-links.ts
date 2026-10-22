@@ -1,5 +1,5 @@
-// Supply verified destinations here before launch. Null keeps unavailable
-// actions visibly disabled rather than inventing contact details or profiles.
+// Keep only verified external destinations here. Missing contact destinations
+// fall back to the on-page contact form; missing social links are omitted.
 export const siteLinks: {
   talk: string | null;
   whatsapp: string | null;
