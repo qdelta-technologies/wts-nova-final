@@ -17,7 +17,7 @@
   .ending-action-secondary:not(:disabled):hover { background: #3368a033; border-color: #a0c4d7; }
 }
 @media (max-width: 639px) {
-  .ending-cta-lead { font-size: 16px; }
+  .ending-cta-lead { font-size: 15px; }
   .ending-actions { flex-direction: column; align-items: center; }
   .ending-action { width: auto; max-width: 100%; }
 }

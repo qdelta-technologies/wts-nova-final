@@ -69,15 +69,15 @@
   .hero { padding-top: clamp(24px, 5svh, 44px); padding-bottom: clamp(82px, 11svh, 120px); }
 }
 @media (max-width: 639px) {
-  .hero { padding-block: 48px 124px; }
+  .hero { padding-block: 40px 108px; }
   .hero-label { padding: 8px 12px; font-size: 9px; letter-spacing: .1em; gap: 7px; }
-  .hero-heading { margin-top: 21px; }
+  .hero-heading { margin-top: 18px; }
   .headline-business { max-width: 480px; margin-inline: auto; }
-  .headline-social { font-size: clamp(36px, 9.3vw, 48px); margin-top: 10px; max-width: 480px; margin-inline: auto; }
-  .hero-description { max-width: 360px; margin-top: 18px; line-height: 1.65; }
-  .hero-actions { flex-direction: column; align-items: center; margin-top: 22px; gap: 10px; }
+  .headline-social { font-size: clamp(33px, 8.7vw, 44px); margin-top: 8px; max-width: 480px; margin-inline: auto; }
+  .hero-description { max-width: 360px; margin-top: 16px; line-height: 1.6; }
+  .hero-actions { flex-direction: column; align-items: center; margin-top: 18px; gap: 9px; }
   .hero-actions .button { width: auto; max-width: 100%; }
-  .hero-horizon { height: 140px; bottom: 26.5px; }
+  .hero-horizon { height: 124px; bottom: 24px; }
   .hero-atmosphere::after { left: 5%; right: 5%; height: 170px; bottom: -60px; filter: blur(12px); }
   .hero-particles span:nth-child(n + 11) { display: none; }
   .hero-particles span { animation-name: hero-particle-rise-mobile; }

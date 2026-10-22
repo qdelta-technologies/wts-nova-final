@@ -85,8 +85,9 @@
   .agency-footer-original-logo { width: 74px; height: 74px; }
   .agency-footer-logo-placeholder { font-size: 19px; }
   .agency-footer-brand { padding-top: 60px; padding-bottom: 24px; }
-  .agency-footer-wordmark { font-size: clamp(54px, 14vw, 72px); }
-  .agency-footer-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px 20px; padding: 24px 0; }
+  .agency-footer-wordmark { font-size: clamp(48px, 12.5vw, 64px); }
+  .agency-footer-tagline, .agency-footer-description { font-size: 15px; }
+  .agency-footer-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 20px 16px; padding: 20px 0; }
   .agency-footer-contact { grid-column: 1 / -1; grid-row: auto; }
   .agency-footer-social-column { grid-column: 1 / -1; padding-top: 22px; border-top: 1px solid var(--line-dark); }
   .agency-footer-actions { flex-direction: row; flex-wrap: wrap; }

@@ -97,16 +97,17 @@
 
 @media (max-width: 639px) {
   :root {
-    --gutter: max(20px, var(--safe-left), var(--safe-right));
-    --section-space: 50px;
-    --section-gap: 28px;
-    --type-display: clamp(32px, 8.2vw, 44px);
-    --type-section: clamp(30px, 7.5vw, 36px);
-    --type-card: 22px;
+    --gutter: max(18px, var(--safe-left), var(--safe-right));
+    --section-space: 44px;
+    --section-gap: 24px;
+    --type-display: clamp(30px, 7.8vw, 42px);
+    --type-section: clamp(28px, 7.1vw, 34px);
+    --type-card: 21px;
+    --type-body: 15px;
     --type-label: 10px;
     --radius-lg: 24px;
   }
-  .button, .ending-action { --button-height: 48px; --button-icon-size: 30px; }
+  .button, .ending-action { --button-height: 46px; --button-icon-size: 28px; }
   .button-icon svg { width: 16px; height: 16px; }
   [data-reveal-state="pending"] { transform: translateY(8px); }
   [data-reveal-state="visible"] { transition-duration: 420ms; }
