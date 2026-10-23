@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { siteLinks } from "@/lib/site-links";
 import { Arrow, Sparkle } from "./icons";
 import { ContactForm } from "./contact-form";
@@ -52,16 +53,29 @@ export function SiteEnding() {
               <div className="agency-footer-contact">
                 <h2>Let&apos;s connect</h2>
                 <p className="agency-footer-description">Social media management and content creation for businesses and personal brands in Nalgonda, Telangana.</p>
+                <address className="agency-footer-details">
+                  <a className="agency-footer-detail" href="tel:+918106294158">
+                    <Phone aria-hidden="true" />
+                    <span>+91 81062 94158</span>
+                  </a>
+                  <a className="agency-footer-detail" href="mailto:contact@wtsnova.com">
+                    <Mail aria-hidden="true" />
+                    <span>contact@wtsnova.com</span>
+                  </a>
+                  <span className="agency-footer-detail agency-footer-detail-location">
+                    <MapPin aria-hidden="true" />
+                    <span>Nalgonda, Telangana, India</span>
+                  </span>
+                </address>
                 {siteLinks.instagram && (
-                  <div className="agency-footer-social-icons" aria-label="Social profiles">
-                    <a href={siteLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="5" />
-                        <circle cx="12" cy="12" r="4" />
-                        <circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none" />
-                      </svg>
-                    </a>
-                  </div>
+                  <a className="agency-footer-detail" href={siteLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram @wtsnova">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none" />
+                    </svg>
+                    <span>@wtsnova</span>
+                  </a>
                 )}
               </div>
               <nav className="agency-footer-links" aria-label="Footer navigation">

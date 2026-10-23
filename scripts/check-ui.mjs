@@ -113,7 +113,7 @@ try {
       narrowFooterTwoColumns:innerWidth>359||getComputedStyle(document.querySelector('.agency-footer-grid')).gridTemplateColumns.split(' ').length===2,
       founderPlaceholderOverlap:(()=>{const n=document.querySelector('.founder-placeholder-note'),c=document.querySelector('.founder-caption');return !!n&&n.getBoundingClientRect().bottom>c.getBoundingClientRect().top-8;})(),
       whyImageCount:document.querySelectorAll('#why-wts-nova img').length,
-      whyColumnsAligned:innerWidth<900||Math.abs(document.querySelector('.why-nova-editorial').getBoundingClientRect().top-document.querySelector('.why-nova-benefits').getBoundingClientRect().top)<1,
+      whyColumnsAligned:innerWidth<900||Math.abs((document.querySelector('.why-nova-editorial').getBoundingClientRect().top+document.querySelector('.why-nova-editorial').getBoundingClientRect().height/2)-(document.querySelector('.why-nova-benefits').getBoundingClientRect().top+document.querySelector('.why-nova-benefits').getBoundingClientRect().height/2))<1,
       bodySize:getComputedStyle(document.querySelector('.hero-description')).fontSize,
       pinCount:document.querySelectorAll('.pin-spacer').length,
       servicesFollowsTrust:document.querySelector('.site-shell').nextElementSibling===document.querySelector('#our-services'),

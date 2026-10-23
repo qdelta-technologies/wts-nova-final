@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 const stats = [
   { target: 6, unit: "", suffix: " Years", label: "Content Experience" },
-  { target: 24, unit: "K+", suffix: "", label: "Instagram Followers" },
+  { target: 23, unit: "K+", suffix: "", label: "Instagram Followers" },
   { target: 8, unit: "+", suffix: "", label: "Brand Retainers" },
-  { target: 1000, unit: "+", suffix: "", label: "Promotions Delivered" },
+  { target: 100, unit: "+", suffix: "", label: "Promotions Delivered" },
 ];
 const numberFormat = new Intl.NumberFormat("en-US");
 

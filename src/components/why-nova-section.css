@@ -19,8 +19,7 @@
 [data-text-reveal][data-reveal-state="pending"] { opacity: 0; clip-path: inset(0 0 100% 0); filter: blur(4px); transform: translate3d(0, .35em, 0); }
 [data-text-reveal][data-reveal-state="visible"] { opacity: 1; clip-path: inset(0); filter: blur(0); transform: translate3d(0, 0, 0); transition: clip-path 720ms var(--ease-out) var(--reveal-delay, 0ms), opacity 480ms ease var(--reveal-delay, 0ms), filter 620ms var(--ease-out) var(--reveal-delay, 0ms), transform 680ms var(--ease-out) var(--reveal-delay, 0ms); }
 @media (min-width: 900px) {
-  .why-nova-editorial { justify-self: center; text-align: center; }
-  .why-nova-intro { margin-inline: auto; }
+  .why-nova-editorial { align-self: center; text-align: left; }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .why-nova-benefit:hover .why-nova-icon { transform: translateY(-2px); background: #e5ebed; }
