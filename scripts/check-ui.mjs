@@ -106,6 +106,7 @@ try {
       clippedNavControls:[...document.querySelectorAll('.navbar .button,.navbar .menu-button')].filter(e=>{const b=e.getBoundingClientRect(),n=document.querySelector('.navbar').getBoundingClientRect();return b.width>0&&(b.left<n.left||b.right>n.right);}).length,
       navLogoLoaded:(()=>{const img=document.querySelector('.brand-logo');return !!img&&img.complete&&img.naturalWidth>0&&img.getAttribute('src')==='/images/wts-nova-logo-nav.webp';})(),
       contactFormReady:(()=>{const form=document.querySelector('.contact-form'),submit=form?.querySelector('button[type="submit"]'),fields=form?[...form.querySelectorAll('input:not([type="hidden"]):not(.contact-honeypot),select,textarea')]:[];return !!form&&form.method==='post'&&form.action==='https://formsubmit.co/wtsnova.agency@gmail.com'&&!!submit&&!submit.disabled&&submit.textContent.includes('Submit inquiry')&&fields.length===5&&fields.every(field=>field.id&&form.querySelector('label[for="'+field.id+'"]'));})(),
+      seoBasics:(()=>{const description=document.querySelector('meta[name="description"]')?.content||'',robots=document.querySelector('meta[name="robots"]')?.content||'';let business;try{const graph=JSON.parse(document.querySelector('script[type="application/ld+json"]')?.textContent||'{}')['@graph']||[];business=graph.find(item=>item['@type']==='ProfessionalService');}catch{return false;}return document.title==='WTS Nova - Social Media Management'&&description.includes('Nalgonda, Telangana')&&robots.includes('index')&&!!business&&business.address?.addressLocality==='Nalgonda'&&business.address?.addressRegion==='Telangana';})(),
       noComingSoonCopy:!document.body.innerText.toLowerCase().includes('coming soon'),
       optimizedEditorialImages:[...document.querySelectorAll('.services-section img,.audience-section img')].every(img=>img.getAttribute('src')?.includes('.webp')),
       mobileBlurDisabled:innerWidth>=640||getComputedStyle(document.querySelector('.service-capsule')).backdropFilter==='none',
@@ -138,6 +139,7 @@ try {
     check(metrics.clippedNavControls === 0, `Clipped navigation controls at ${width}px`);
     check(metrics.navLogoLoaded, `Navbar logo failed to load at ${width}px`);
     check(metrics.contactFormReady && metrics.noComingSoonCopy, `Contact form must be usable and no dead-link notices shown at ${width}px`);
+    check(metrics.seoBasics, `WTS Nova title, local metadata, and structured business data must be present at ${width}px`);
     check(metrics.optimizedEditorialImages && metrics.mobileBlurDisabled, `Editorial image or mobile blur optimization at ${width}px`);
     check(metrics.narrowFooterTwoColumns, `Footer links should remain compact side-by-side columns at ${width}px`);
     check(!metrics.founderPlaceholderOverlap, `Portrait placeholder overlaps caption at ${width}px`);

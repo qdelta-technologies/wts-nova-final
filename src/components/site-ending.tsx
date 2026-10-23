@@ -51,7 +51,7 @@ export function SiteEnding() {
             <div className="agency-footer-grid">
               <div className="agency-footer-contact">
                 <h2>Let&apos;s connect</h2>
-                <p className="agency-footer-description">Helping businesses and personal brands build a stronger presence through content, creativity, and social media management.</p>
+                <p className="agency-footer-description">Social media management and content creation for businesses and personal brands in Nalgonda, Telangana.</p>
                 {siteLinks.instagram && (
                   <div className="agency-footer-social-icons" aria-label="Social profiles">
                     <a href={siteLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">

@@ -1,4 +1,4 @@
-.founder-section { padding: 32px var(--gutter) var(--section-space); background: var(--surface); color: var(--ink); scroll-margin-top: 24px; }
+.founder-section { padding: var(--section-space) var(--gutter); background-color: var(--surface); background-image: linear-gradient(#3368a01f 1px, transparent 1px), linear-gradient(90deg, #3368a01f 1px, transparent 1px); background-size: 64px 64px; background-repeat: round; background-position: left top; color: var(--ink); scroll-margin-top: 24px; }
 .founder-container { max-width: var(--container); margin-inline: auto; }
 .founder-panel { position: relative; display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); align-items: stretch; gap: 36px; padding: 36px; border: 1px solid var(--line-dark); border-radius: var(--radius-lg); background: radial-gradient(ellipse at 0% 0%, #3368a026, transparent 60%), var(--ink); color: var(--on-dark); }
 .founder-panel { transition: transform 700ms var(--ease-out), box-shadow 700ms var(--ease-out), border-color 700ms var(--ease-out); }
@@ -39,7 +39,6 @@
   .founder-instagram:hover { color: #fff; border-color: #a0c4d7; background: #3368a044; transform: translateY(-1px); }
 }
 @media (max-width: 639px) {
-  .founder-section { padding-top: 16px; }
   .founder-panel { grid-template-columns: 1fr; padding: 18px; gap: 22px; }
   .founder-portrait { min-height: 250px; height: auto; aspect-ratio: 1.08; }
   .founder-content { padding: 0; }
