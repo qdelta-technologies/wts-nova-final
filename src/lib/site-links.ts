@@ -1,5 +1,7 @@
 // Keep only verified external destinations here. Missing contact destinations
 // fall back to the on-page contact form; missing social links are omitted.
+const whatsappMessage = encodeURIComponent("Hi WTS Nova! I'd love to learn more about your services. Could you share some details?");
+
 export const siteLinks: {
   talk: string | null;
   whatsapp: string | null;
@@ -9,7 +11,7 @@ export const siteLinks: {
   navLogo: string | null;
 } = {
   talk: null,
-  whatsapp: null,
+  whatsapp: `https://wa.me/918106294158?text=${whatsappMessage}`,
   instagram: "https://www.instagram.com/wtsnova/",
   work: null,
   // Display-resolution lossless copy of the supplied artwork (288px covers 3x at the

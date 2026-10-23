@@ -24,7 +24,6 @@ export function AudienceSection() {
               <span className="audience-badge"><AudienceMark /></span>
             </div>
             <div className="audience-copy">
-              <span className="audience-number" aria-hidden="true">01</span>
               <h3>Businesses</h3>
               <p>From local shops and service providers to growing brands, we help businesses establish a professional and consistent social media presence.</p>
             </div>
@@ -35,7 +34,6 @@ export function AudienceSection() {
               <span className="audience-badge"><AudienceMark creator /></span>
             </div>
             <div className="audience-copy">
-              <span className="audience-number" aria-hidden="true">02</span>
               <h3>Creators &amp; Personal Brands</h3>
               <p>We help creators, founders, coaches, and professionals share their ideas, build their presence, and connect with their audience.</p>
             </div>

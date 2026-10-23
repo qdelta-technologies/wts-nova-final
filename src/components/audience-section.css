@@ -1,4 +1,4 @@
-.audience-section { padding: var(--section-space) var(--gutter); background: radial-gradient(ellipse at 50% 100%, #3368a02e, transparent 65%), var(--ink); color: var(--on-dark); scroll-margin-top: 24px; }
+.audience-section { padding: var(--section-space) var(--gutter); background-color: var(--ink); background-image: radial-gradient(circle, #66a3bf30 1px, transparent 1.2px), radial-gradient(ellipse at 50% 100%, #3368a02e, transparent 65%); background-size: 34px 34px, auto; background-position: 0 0, center; color: var(--on-dark); scroll-margin-top: 24px; }
 .audience-layout { max-width: var(--container); margin-inline: auto; display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); align-items: center; gap: var(--section-gap); }
 .audience-header { min-width: 0; max-width: 400px; }
 .audience-label { margin: 0 0 18px; color: #a0c4d7; }
@@ -17,8 +17,7 @@
 .audience-badge svg { width: 17px; height: 17px; }
 .audience-creators .audience-badge { background: var(--accent); }
 .audience-copy { flex: 1; min-width: 0; text-align: left; }
-.audience-number { display: block; font-size: 10px; line-height: 1.5; letter-spacing: .1em; margin-bottom: 8px; color: #a0c4d7; }
-.audience-copy h3 { margin: 0 0 12px; font-family: var(--font-serif), Georgia, serif; font-size: var(--type-card); font-weight: 400; line-height: 1.16; letter-spacing: -.015em; text-wrap: balance; }
+.audience-copy h3 { margin: 0 0 12px; font-family: var(--font-manrope), sans-serif; font-size: var(--type-card); font-weight: 700; line-height: 1.22; letter-spacing: -.035em; text-wrap: balance; }
 .audience-copy p { font-size: var(--type-body); line-height: var(--leading-body); color: var(--on-dark-muted); margin: 0; text-wrap: pretty; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .audience-capsule:hover { transform: translate3d(0, -6px, 0); border-color: #66a3bf80; box-shadow: 0 22px 40px #00000024; }
@@ -44,8 +43,7 @@
   .audience-badge svg { width: 14px; height: 14px; }
   .audience-creators .audience-badge { left: -2px; right: auto; }
   .audience-copy { display: contents; }
-  .audience-number { grid-column: 1; grid-row: 1; align-self: start; margin: 0; }
-  .audience-copy h3 { grid-column: 1; grid-row: 1; align-self: start; font-size: 20px; margin: 17px 0 0; text-wrap: pretty; }
+  .audience-copy h3 { grid-column: 1; grid-row: 1; align-self: start; font-size: 19px; line-height: 1.2; margin: 0; text-wrap: pretty; }
   .audience-copy p { grid-column: 1 / -1; grid-row: 2; line-height: 1.6; }
 }
 @media (max-width: 359px) {

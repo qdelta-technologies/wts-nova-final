@@ -5,17 +5,6 @@ import { ContactForm } from "./contact-form";
 import "./site-ending.css";
 import "./agency-footer.css";
 
-function ContactAction({ href, children, secondary = false, fallbackLabel }: {
-  href: string | null;
-  children: React.ReactNode;
-  secondary?: boolean;
-  fallbackLabel?: string;
-}) {
-  const className = `ending-action${secondary ? " ending-action-secondary" : ""}`;
-  const content = <>{href ? children : fallbackLabel ?? children}<span className="button-icon"><Arrow diagonal /></span></>;
-  return <a className={className} href={href ?? "#get-in-touch"}>{content}</a>;
-}
-
 const navigation = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about-wts-nova" },
@@ -74,10 +63,6 @@ export function SiteEnding() {
                     </a>
                   </div>
                 )}
-                <div className="agency-footer-actions">
-                  <ContactAction href={siteLinks.talk}>Let&apos;s Talk</ContactAction>
-                  <ContactAction href={siteLinks.whatsapp} secondary fallbackLabel="Use contact form">Chat on WhatsApp</ContactAction>
-                </div>
               </div>
               <nav className="agency-footer-links" aria-label="Footer navigation">
                 <h2>Explore</h2>
@@ -95,6 +80,14 @@ export function SiteEnding() {
           </div>
         </div>
       </footer>
+      {siteLinks.whatsapp && (
+        <a className="whatsapp-float" href={siteLinks.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with WTS Nova on WhatsApp" title="Chat with us on WhatsApp">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20.5 11.7a8.5 8.5 0 0 1-12.7 7.4L3 21l1.7-5a8.5 8.5 0 1 1 15.8-4.3Z" />
+            <path d="M8 7.5c0 4.5 4 8 8.5 8l1-2-3-1-1 1c-1.4-.7-2.4-1.7-3-3l1-1-1.5-3Z" />
+          </svg>
+        </a>
+      )}
     </div>
   );
 }
