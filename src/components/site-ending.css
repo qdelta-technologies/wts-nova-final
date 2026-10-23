@@ -50,6 +50,9 @@
   .ending-cta-content { max-width: 620px; }
   .ending-cta-lead, .ending-cta-description { max-width: 580px; }
 }
+@media (max-width: 1023px) {
+  .ending-cta-lead { display: none; }
+}
 @media (max-width: 639px) {
   .ending-cta-layout { gap: 22px; }
   .ending-eyebrow { margin-bottom: 14px; }

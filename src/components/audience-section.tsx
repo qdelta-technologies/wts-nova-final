@@ -13,8 +13,8 @@ export function AudienceSection() {
       <div className="audience-layout">
         <header className="audience-header" data-reveal>
           <p className="audience-label section-label">WHO WE WORK WITH</p>
-          <h2 id="audience-heading" className="audience-heading section-heading"><span>Built for Businesses.</span> <span>Made for People.</span></h2>
-          <p className="audience-intro">Whether you&apos;re building a business or a personal brand, we help you show up online with confidence.</p>
+          <h2 id="audience-heading" className="audience-heading section-heading">For Businesses &amp; Personal Brands</h2>
+          <p className="audience-intro">Whether you&apos;re building a business or growing a personal brand, we help you stand out, build trust, and reach the right audience.</p>
           <span className="audience-rule" aria-hidden="true" />
         </header>
         <ol className="audience-capsules">

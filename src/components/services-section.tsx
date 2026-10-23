@@ -34,7 +34,7 @@ export function ServicesSection() {
       <div className="services-container">
         <header className="services-header" data-reveal>
           <p className="services-label section-label">OUR SERVICES</p>
-          <h2 id="services-heading" className="services-heading section-heading">What We <span>Do.</span></h2>
+          <h2 id="services-heading" className="services-heading section-heading">What We Do</h2>
           <p className="services-intro">Everything your brand needs to create, manage, and strengthen its online presence.</p>
         </header>
         <ol className="services-list">
