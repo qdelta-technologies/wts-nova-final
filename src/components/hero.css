@@ -85,7 +85,7 @@
   .headline-social { font-size: clamp(33px, 8.7vw, 44px); margin-top: 8px; max-width: 480px; margin-inline: auto; }
   .hero-description { max-width: 360px; margin-top: 16px; line-height: 1.6; }
   .hero-actions { flex-direction: column; align-items: center; margin-top: 18px; gap: 9px; }
-  .hero-actions .button { width: auto; max-width: 100%; }
+  .hero-actions .button { width: 100%; max-width: 250px; justify-content: space-between; }
   .hero-horizon { height: 124px; bottom: 24px; }
   .hero-atmosphere::after { left: 5%; right: 5%; height: 170px; bottom: -60px; filter: blur(12px); }
   .hero-particles span:nth-child(n + 11) { display: none; }

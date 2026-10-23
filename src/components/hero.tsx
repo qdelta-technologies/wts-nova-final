@@ -82,7 +82,7 @@ export function Hero() {
         <p className="hero-description entrance delay-3">We help businesses build a stronger social media presence with great content, consistent posting, and the right strategy.</p>
         <div className="hero-actions entrance delay-4">
           <a href="#get-in-touch" className="button button-dark hero-primary">Contact <span className="button-icon"><Arrow diagonal /></span></a>
-          <a href="#our-services" className="button button-light">Explore Our Services <span className="button-icon"><Arrow /></span></a>
+          <a href="#our-services" className="button button-light">Our Services <span className="button-icon"><Arrow /></span></a>
         </div>
       </div>
     </section>
