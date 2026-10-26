@@ -26,7 +26,7 @@ export function WhyNovaSection() {
         </div>
         <ol className="why-nova-benefits">
           {benefits.map((benefit, index) => (
-            <li className="why-nova-benefit" key={benefit.title}>
+            <li className="why-nova-benefit" key={benefit.title} data-text-reveal>
               {index < benefits.length - 1 && (
                 <svg aria-hidden="true" className="why-nova-connector" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
                   <path d={index % 2 ? "M54 0C-10 24 108 76 42 100" : "M42 0C108 24-10 76 54 100"} vectorEffect="non-scaling-stroke" />
@@ -34,9 +34,9 @@ export function WhyNovaSection() {
               )}
               <div className="why-nova-icon"><BenefitIcon type={benefit.icon} /></div>
               <div className="why-nova-benefit-copy">
-                <span className="why-nova-number" aria-hidden="true" data-text-reveal>0{index + 1}</span>
-                <h3 data-text-reveal>{benefit.title}</h3>
-                <p data-text-reveal>{benefit.description}</p>
+                <span className="why-nova-number" aria-hidden="true">0{index + 1}</span>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
               </div>
             </li>
           ))}
