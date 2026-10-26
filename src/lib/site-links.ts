@@ -11,7 +11,7 @@ export const siteLinks: {
   navLogo: string | null;
 } = {
   talk: null,
-  whatsapp: `https://wa.me/918106294158?text=${whatsappMessage}`,
+  whatsapp: `https://wa.me/917989578194?text=${whatsappMessage}`,
   instagram: "https://www.instagram.com/wtsnova/",
   work: null,
   // Display-resolution lossless copy of the supplied artwork (288px covers 3x at the

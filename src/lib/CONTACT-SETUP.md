@@ -3,7 +3,7 @@
 Update `src/lib/site-links.ts` with approved destinations before launch:
 
 - `talk`: a real email link or booking/contact URL.
-- `whatsapp`: the floating WhatsApp button uses the verified number `+91 81062 94158` and a prefilled service inquiry.
+- `whatsapp`: the floating WhatsApp button uses the verified number `+91 79895 78194` and a prefilled service inquiry.
 - `instagram`: the official profile URL.
 - `work`: the approved portfolio destination.
 - `logo` and `navLogo`: both point to `/images/wts-nova-logo-nav.webp`, a lossless 288px display-size copy of the supplied transparent WTS Nova logo. The untouched original PNG and its full-size WebP copy remain in `public/images/`.

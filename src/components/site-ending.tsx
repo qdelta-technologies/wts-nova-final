@@ -54,9 +54,9 @@ export function SiteEnding() {
                 <h2>Let&apos;s connect</h2>
                 <p className="agency-footer-description">Social media management and content creation for businesses and personal brands in Nalgonda, Telangana.</p>
                 <address className="agency-footer-details">
-                  <a className="agency-footer-detail" href="tel:+918106294158">
+                  <a className="agency-footer-detail" href="tel:+917989578194">
                     <Phone aria-hidden="true" />
-                    <span>+91 81062 94158</span>
+                    <span>+91 79895 78194</span>
                   </a>
                   <a className="agency-footer-detail" href="mailto:contact@wtsnova.com">
                     <Mail aria-hidden="true" />
